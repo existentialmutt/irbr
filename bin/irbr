@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+
+# irbr (short for "IRB Recorder")
+#
+# Starts an IRB session and appends your history to the specified file
+# or "scratch.rb" by default
+#
+# USAGE irbr output.rb
+
+require "irb"
+
+file = ARGV.first || "scratch.rb"
+
+IRB.conf[:HISTORY_FILE] = file
+IRB.conf[:SAVE_HISTORY] = 10_000
+
+IRB.start
